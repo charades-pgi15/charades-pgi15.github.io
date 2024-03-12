@@ -1,6 +1,7 @@
 const data = {
+    demo: ['Galaxy', 'Power', 'Prophesee', 'Tribes', 'Spice', 'Worms', 'Books', 'Dessert', 'Rat', 'Water', 'Storm'],
     lotr: ["Fellowship", "Quest", "Ring", "Darkness", "Journey", "Adventure", "Magic", "War", "Friendship", "Wizard", "Sacrifice", "Hope", "Destiny", "Elves", "Epic", "Fantasy", "Triumph", "Alliance", "Legacy", "Dwarves"],
-    got: ["Bloodline", "Politics", "Revenge", "Snow", "Spies", "Wedding", "Mountain", "Wolf", "Winter", "Ravens", "Wall", "Little Finger", "Wine", "Steel Sword", "Fire", "Honor", "Ice", "Schemes", "Books", "Slaves"],
+    got: ["Bloodline", "Politics", "Revenge", "Snow", "Spies", "Wedding", "Mountain", "Wolf", "Winter", "Ravens", "Wall", "Pinky Finger", "Wine", "Steel Sword", "Fire", "Honor", "Ice", "Schemes", "Books", "Slaves"],
     bbt: ["Apartment", "Roommates", "Experiments", "Neighbours", "Cheesecake", "Lullaby", "International Space Station", "Toilet", "Grasshopper", "Dungeons and Dragons", "Comic Books", "Trains", "Engineer", "Rock Paper Scissors", "Space Explosion"],
     mj: ["Moon", "Performance", "Icon", "Gloves", "Thriller", "Robot", "Extraterrestrial", "Boxer", "King", "Wax Statue", "Death", "Chimpanzee"],
     cn: ["Dreams", "Penguin", "Cinema", "Perception", "Big Ben", "Memory Loss", "Award", "Space", "Tesla", "Magicians", "World War", "Sleeplessness", "Time", "Bat", "Nonlinear"],
@@ -24,16 +25,27 @@ function shuffleArray(array) {
     }
 }
 
+// Create demo button
+const demoButton = document.getElementById('demoButton');
+demoButton.addEventListener("click", () => {
+    currentTopic = 'demo'; // Set the current topic
+    currentWordIndex = 0; // Reset the current word index
+    shuffleArray(data[currentTopic]); // Shuffle the words array
+    showWord();
+
+});
+
 // Create buttons for each topic
 Object.keys(data).forEach(topic => {
-    if (data[topic].length === 0) {
-        // Skip this topic if it has no words
+    if (topic === 'demo' || data[topic].length === 0) {
+        // Skip the demo and any topic that has no words
         return;
     }
 
     const button = document.createElement("button");
-    button.textContent = "Topic " + (Object.keys(data).indexOf(topic) + 1);
+    button.textContent = "Round " + (Object.keys(data).indexOf(topic));
     button.addEventListener("click", () => {
+        button.classList.add('played');
         currentTopic = topic; // Set the current topic
         currentWordIndex = 0; // Reset the current word index
         shuffleArray(data[currentTopic]); // Shuffle the words array
@@ -63,8 +75,9 @@ function showWord() {
     wordButtonsDiv.appendChild(newElement);
 
     // Create a "Done" button
-    const button = document.createElement("button");
-    button.textContent = "Done";
+    const button = document.createElement("doneButton");
+    button.id = "doneButton";
+    button.innerHTML = "&#8594; Next";
     button.addEventListener("click", () => {
         currentWordIndex++; // Move to the next word
         showWord();
@@ -78,3 +91,4 @@ document.getElementById('backButton').addEventListener('click', function () {
     document.getElementById('wordSelection').style.display = 'none';
     document.getElementById('topicSelection').style.display = 'block';
 });
+

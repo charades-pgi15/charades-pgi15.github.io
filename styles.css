@@ -1,37 +1,66 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    /* background-color: #f4f4f4; */
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    font-size: 18px;
 }
 
 .container {
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+    margin-left: 11px;
+    /* Add left margin */
+    margin-right: 11px;
+    /* Add right margin */
 }
 
-#topicButtons,
+#topicButtons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+
+}
+
+
+
 #wordButtons {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 1.4em;
+    /* 1.5 times the base font size */
+    font-weight: normal;
+    text-align: center;
+}
+
+p {
+    font-size: 1.5em;
+    /* Adjust this value as needed */
 }
 
 button {
+    flex: 1 0 200px;
     padding: 10px 20px;
-    font-size: 1em;
+    font-size: 1.2em;
+    /* 1.2 times the base font size */
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    background-color: #007BFF;
+    background-color: #003A6B;
     color: #fff;
 }
 
@@ -40,9 +69,67 @@ button:hover {
 }
 
 #backButton {
-    background-color: #dc3545;
+    background-color: #E6001A;
+    bottom: 0;
 }
 
 #backButton:hover {
     background-color: #c82333;
+}
+
+doneButton {
+    flex: 1 0 20px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    /* 1.2 times the base font size */
+    border: none;
+    border-radius: 50px;
+    /* Make it round */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #1e7e34;
+    /* Green */
+    color: #fff;
+    bottom: 0;
+}
+
+doneButton:hover {
+    background-color: #1e7e34;
+    /* Darker green */
+}
+
+.demo {
+    display: block;
+    /* Make the demo button occupy an entire line */
+    width: 100%;
+    /* Make the demo button as wide as its container */
+    background-color: #003A6B;
+    /* Forschungszentrum Jülich's dark blue */
+    color: #fff;
+    /* margin-bottom: 20px; */
+    /* Add a gap below the demo button */
+}
+
+#demoContainer {
+    margin-bottom: 20px;
+    /* Add vertical space below the demo container */
+}
+
+#demoButton {
+    display: block;
+    /* Make the demo button occupy an entire line */
+    width: 100%;
+    /* Make the demo button as wide as its container */
+    background-color: #F39200;
+    /* Forschungszentrum Jülich's dark blue */
+    color: #fff;
+}
+
+#demoButton:hover {
+    background-color: #C76C00;
+}
+
+#topicButtons .played {
+    background-color: #0056b3;
+    /* Lighter background color */
 }
